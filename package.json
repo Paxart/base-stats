@@ -1,0 +1,13 @@
+{
+  "name": "base-stats",
+  "version": "1.0.0",
+  "description": "Estadísticas en tiempo real de la red Base y el token DIEM",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["base", "blockchain", "stats", "diem"],
+  "author": "Tu Nombre",
+  "license": "MIT"
+}

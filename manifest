@@ -1,0 +1,23 @@
+{
+  "name": "Base Stats",
+  "description": "Estadísticas en tiempo real de la red Base y el token DIEM",
+  "url": "https://base-stats.vercel.app",
+  "icon": "https://base-stats.vercel.app/icon.png",
+  "type": "miniapp",
+  "frames": [
+    {
+      "version": "vNext",
+      "image": "https://base-stats.vercel.app/image.png",
+      "buttons": [
+        {
+          "label": "Ver Estadísticas",
+          "action": "post_redirect"
+        },
+        {
+          "label": "Conectar Wallet",
+          "action": "post_redirect"
+        }
+      ]
+    }
+  ]
+}

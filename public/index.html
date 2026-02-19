@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base Stats - Estadísticas de la Red Base</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0052FF;
+            --secondary-color: #00D4FF;
+            --dark-bg: #0A0B0D;
+            --card-bg: #151619;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0A0;
+            --accent-color: #FF4D4D;
+            --success-color: #00C853;
+            --border-color: #2A2B2E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0A0B0D 0%, #1A1B1E 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .user-section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .user-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 82, 255, 0.15);
+        }
+
+        .input-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        #username {
+            flex: 1;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            min-width: 250px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #username:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 82, 255, 0.2);
+        }
+
+        #getUserStats {
+            padding: 1rem 2rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        #getUserStats:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 82, 255, 0.4);
+        }
+
+        #getUserStats:active {
+            transform: translateY(0);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 82, 255, 0.15);
+        }
+
+        .stat-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stat-card h3 {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .transaction-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .transaction-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s ease;
+        }
+
+        .transaction-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .transaction-address {
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .transaction-value {
+            font-weight: 600;
+            color: var(--success-color);
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .back-button {
+            margin-top: 1.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .user-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .user-details h3 {
+            margin: 0;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+        }
+
+        .user-details p {
+            margin: 0;
+            font-family: monospace;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .mini-stat {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .mini-stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .mini-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .input-group {
+                flex-direction: column;
+            }
+            
+            #getUserStats {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-chart-line"></i>
+            <h1>Base Stats</h1>
+        </div>
+        <p class="tagline">Estadísticas en tiempo real de la red Base y el token DIEM</p>
+    </header>
+
+    <main>
+        <section class="user-section">
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Introduce tu nombre de usuario" />
+                <button id="getUserStats">
+                    <i class="fas fa-search"></i>
+                    Ver mis estadísticas
+                </button>
+            </div>
+        </section>
+
+        <div id="stats" class="stats-container">
+            <div class="loading">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Base Stats. Desarrollado para la comunidad de Base.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Elementos del DOM
+            const usernameInput = document.getElementById('username');
+            const getUserStatsBtn = document.getElementById('getUserStats');
+            const statsContainer = document.getElementById('stats');
+            
+            // Cargar estadísticas generales al iniciar
+            loadGeneralStats();
+            
+            // Manejar clic en el botón de estadísticas de usuario
+            getUserStatsBtn.addEventListener('click', () => {
+                const username = usernameInput.value.trim();
+                if (!username) {
+                    showNotification('Por favor, introduce tu nombre de usuario', 'error');
+                    return;
+                }
+                
+                loadUserStats(username);
+            });
+            
+            // Permitir presionar Enter en el campo de texto
+            usernameInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    getUserStatsBtn.click();
+                }
+            });
+            
+            // Función para cargar estadísticas generales
+            function loadGeneralStats() {
+                showLoading();
+                
+                fetch('/api/stats')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            displayGeneralStats(data.data);
+                        } else {
+                            showError('Error al cargar estadísticas generales');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error al cargar estadísticas:', error);
+                        showError('Error de conexión al servidor');
+                    });
+            }
+            
+            // Función para cargar estadísticas de usuario
+            function loadUserStats(username) {
+                showLoading();
+                
+                fetch(`/api/user/${encodeURIComponent(username)}/stats`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            displayUserStats(data.data);
+                        } else {
+                            showError(`Error: ${data.error}`);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error al cargar estadísticas de usuario:', error);
+                        showError('Error de conexión al servidor');
+                    });
+            }
+            
+            // Función para mostrar estadísticas generales
+            function displayGeneralStats(stats) {
+                statsContainer.innerHTML = `
+                    <div class="stat-card">
+                        <h2><i class="fas fa-network-wired"></i> Red Base</h2>
+                        <div class="stat-item">
+                            <span class="stat-label">Último bloque:</span>
+                            <span class="stat-value">${stats.latestBlockNumber.toLocaleString()}</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Timestamp:</span>
+                            <span class="stat-value">${formatDate(stats.latestBlockTimestamp)}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <h2><i class="fas fa-coins"></i> DIEM Token</h2>
+                        <div class="stat-item">
+                            <span class="stat-label">Transacciones (24h):</span>
+                            <span class="stat-value">${stats.diem.totalTransactions.toLocaleString()}</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Volumen total (24h):</span>
+                            <span class="stat-value">${parseFloat(stats.diem.totalVolume).toLocaleString()} DIEM</span>
+                        </div>
+                        
+                        <h3>Transacciones recientes</h3>
+                        <ul class="transaction-list">
+                            ${stats.diem.transactions.map(tx => 
+                                `<li class="transaction-item">
+                                    <div>
+                                        <div>De: <span class="transaction-address">${formatAddress(tx.from)}</span></div>
+                                        <div>A: <span class="transaction-address">${formatAddress(tx.to)}</span></div>
+                                    </div>
+                                    <div class="transaction-value">${parseFloat(tx.value).toLocaleString()} DIEM</div>
+                                </li>`
+                            ).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            // Función para mostrar estadísticas de usuario
+            function displayUserStats(stats) {
+                const userInitial = stats.username.charAt(0).toUpperCase();
+                
+                statsContainer.innerHTML = `
+                    <div class="stat-card">
+                        <div class="user-info">
+                            <div class="user-avatar">${userInitial}</div>
+                            <div class="user-details">
+                                <h3>${stats.username}</h3>
+                                <p>${formatAddress(stats.address)}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stats-grid">
+                            <div class="mini-stat">
+                                <div class="mini-stat-value">${parseFloat(stats.diemBalance).toLocaleString()}</div>
+                                <div class="mini-stat-label">Balance DIEM</div>
+                            </div>
+                            <div class="mini-stat">
+                                <div class="mini-stat-value">${stats.transactions24h.toLocaleString()}</div>
+                                <div class="mini-stat-label">Transacciones (24h)</div>
+                            </div>
+                            <div class="mini-stat">
+                                <div class="mini-stat-value">${parseFloat(stats.volume24h).toLocaleString()}</div>
+                                <div class="mini-stat-label">Volumen (24h)</div>
+                            </div>
+                            <div class="mini-stat">
+                                <div class="mini-stat-value">${stats.recentTransactions.length}</div>
+                                <div class="mini-stat-label">Transacciones recientes</div>
+                            </div>
+                        </div>
+                        
+                        <h3>Historial de transacciones</h3>
+                        <ul class="transaction-list">
+                            ${stats.recentTransactions.map(tx => 
+                                `<li class="transaction-item">
+                                    <div>
+                                        <div><strong>${tx.type}</strong></div>
+                                        <div>${formatDate(tx.timestamp)}</div>
+                                    </div>
+                                    <div class="transaction-value">${parseFloat(tx.value).toLocaleString()} DIEM</div>
+                                </li>`
+                            ).join('')}
+                        </ul>
+                        
+                        <button class="back-button" id="backToGeneral">
+                            <i class="fas fa-arrow-left"></i>
+                            Volver a estadísticas generales
+                        </button>
+                    </div>
+                `;
+                
+                // Añadir evento para volver a estadísticas generales
+                document.getElementById('backToGeneral').addEventListener('click', () => {
+                    loadGeneralStats();
+                });
+            }
+            
+            // Función para mostrar indicador de carga
+            function showLoading() {
+                statsContainer.innerHTML = `
+                    <div class="loading">
+                        <div class="spinner"></div>
+                    </div>
+                `;
+            }
+            
+            // Función para mostrar error
+            function showError(message) {
+                statsContainer.innerHTML = `
