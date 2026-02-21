@@ -1,17 +1,20 @@
 {
-  "accountAssociation": {
-    "header": "eyJmaWQiOjE1ODQ4LCJ0eXBlIjoiYXV0aCIsImtleSI6IjB4RDgzY2U4MjUyMzQ1ZkM0QzI5MzViY2ZGMjhhODNCZWM1NDYxMUI1OCJ9",
-    "payload": "yJkb21haW4iOiJiYXNlZW52aXZvLnZlcmNlbC5hcHAifQ",
-    "signature": "lah0Kp0VcB1ldS97KGwtHweETyDpb48krDO/gEB6ZwFIL7Vv/Hu5TWULx5LETWxN9MnzKE2L/FZiJwGq7/kj7xs="
-  },
-  "miniapp": {
-    "version": "1",
+  "frame": {
     "name": "Base En Vivo",
+    "version": "1",
     "iconUrl": "https://baseenvivo.vercel.app/icon.png",
     "homeUrl": "https://baseenvivo.vercel.app",
     "imageUrl": "https://baseenvivo.vercel.app/image.png",
-    "buttonTitle": "Ver Estadísticas",
-    "splashImageUrl": "https://baseenvivo.vercel.app/icon.png",
-    "splashBackgroundColor": "#6200EA"
+    "splashImageUrl": "https://baseenvivo.vercel.app/splash.png",
+    "splashBackgroundColor": "#6200EA",
+    "webhookUrl": "https://baseenvivo.vercel.app/api/webhook",
+    "subtitle": "Estadísticas en tiempo real de la red base",
+    "description": "Estadísticas en tiempo real de la red base",
+    "primaryCategory": "developer-tools",
+    "heroImageUrl": "https://baseenvivo.vercel.app/image.png"
+  },
+  "accountAssociation": {
+    "header": "eyJmaWQiOjE1ODQ4LCJ0eXBlIjoiYXV0aCIsImtleSI6IjB4RDgzY2U4MjUyMzQ1ZkM0QzI5MzViY2ZGMjhhODNCZWM1NDYxMUI1OCJ9",
+    "payload": "eyJkb21haW4iOiJiYXNlZW52aXZvLnZlcmNlbC5hcHAifQ",
+    "signature": "lah0Kp0VcB1ldS97KGwtHweETyDpb48krDO/gEB6ZwFIL7Vv/Hu5TWULx5LETWxN9MnzKE2L/FZiJwGq7/kj7xs="
   }
-}
