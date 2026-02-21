@@ -1,13 +1,36 @@
 {
-  "name": "Base Stats",
-  "description": "Estadísticas en tiempo real de la red Base y el token DIEM",
-  "url": "https://base-stats.vercel.app",
-  "icon": "https://base-stats.vercel.app/icon.png",
-  "type": "miniapp",
+  "name": "Base En Vivo",
+  "version": "1",
+  "iconUrl": "https://baseenvivo.vercel.app/icon.png",
+  "homeUrl": "https://baseenvivo.vercel.app",
+  "imageUrls": [
+    "https://baseenvivo.vercel.app/image.png"
+  ],
+  "splashBackgroundColor": "#6200EA",
+  "subtitle": "Consulta estadísticas en tiempo real de la red Base",
+  "description": "Ideal para usuarios que quieren ver su actividad y las métricas de la red.",
+  "primaryCategory": "developer-tools",
+  "screenshots": [
+    "https://baseenvivo.vercel.app/image.png"
+  ],
+  "heroImageUrl": "https://baseenvivo.vercel.app/image.png",
+  "splashScreenImageUrl": "https://baseenvivo.vercel.app/icon.png",
+  "marketingTagline": "Estadísticas en tiempo real de Base",
+  "buttonTitle": "Ver Estadísticas",
+  "socialShareTitle": "Base En Vivo - Estadísticas de la red Base",
+  "socialShareDescription": "Consulta las estadísticas en tiempo real de la red Base y el token DIEM.",
+  "socialShareImageUrl": "https://baseenvivo.vercel.app/image.png",
+  "castShareUrl": "https://baseenvivo.vercel.app",
+  "homeUrl": "https://baseenvivo.vercel.app",
+  "accountAssociation": {
+    "header": "eyJmaWQiOjE1ODQ4LCJ0eXBlIjoiYXV0aCIsImtleSI6IjB4RDgzY2U4MjUyMzQ1ZkM0QzI5MzViY2ZGMjhhODNCZWM1NDYxMUI1OCJ9",
+    "payload": "eyJkb21haW4iOiJodHRwczovL2Jhc2VlbnZpdm8udmVyY2VsLmFwcCJ9",
+    "signature": "YYbBddEtsBnaU3OdgMlM4pAgEB85LS7FLq224h7OiLdgzn7zo9bk+yM6kKm8nMqwLD9A7ixhRmih0zX83ImbEhs="
+  },
   "frames": [
     {
       "version": "vNext",
-      "image": "https://base-stats.vercel.app/image.png",
+      "image": "https://baseenvivo.vercel.app/image.png",
       "buttons": [
         {
           "label": "Ver Estadísticas",

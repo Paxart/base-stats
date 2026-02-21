@@ -1,13 +1,21 @@
 {
   "name": "base-stats",
   "version": "1.0.0",
-  "description": "Estadísticas en tiempo real de la red Base y el token DIEM",
-  "main": "server.js",
+  "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
-  "keywords": ["base", "blockchain", "stats", "diem"],
-  "author": "Tu Nombre",
-  "license": "MIT"
+  "dependencies": {
+    "react": "¹.2.0",
+    "react-dom": "¹.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "¹.2.0",
+    "@types/react-dom": "¹.2.0",
+    "@vitejs/plugin-react": "⁴.0.0",
+    "typescript": "⁵.0.0",
+    "vite": "⁴.0.0"
+  }
 }

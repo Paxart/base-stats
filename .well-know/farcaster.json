@@ -1,0 +1,17 @@
+{
+  "accountAssociation": {
+    "header": "eyJmaWQiOjE1ODQ4LCJ0eXBlIjoiYXV0aCIsImtleSI6IjB4RDgzY2U4MjUyMzQ1ZkM0QzI5MzViY2ZGMjhhODNCZWM1NDYxMUI1OCJ9",
+    "payload": "eyJkb21haW4iOiJodHRwczovL2Jhc2VlbnZpdm8udmVyY2VsLmFwcCJ9",
+    "signature": "YYbBddEtsBnaU3OdgMlM4pAgEB85LS7FLq224h7OiLdgzn7zo9bk+yM6kKm8nMqwLD9A7ixhRmih0zX83ImbEhs="
+  },
+  "miniapp": {
+    "version": "1",
+    "name": "Base En Vivo",
+    "iconUrl": "https://baseenvivo.vercel.app/icon.png",
+    "homeUrl": "https://baseenvivo.vercel.app",
+    "imageUrl": "https://baseenvivo.vercel.app/image.png",
+    "buttonTitle": "Ver Estadísticas",
+    "splashImageUrl": "https://baseenvivo.vercel.app/icon.png",
+    "splashBackgroundColor": "#6200EA"
+  }
+}
